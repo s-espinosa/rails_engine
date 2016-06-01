@@ -14,6 +14,10 @@ module FindByHelper
       model.find_by(merchant_id: params["merchant_id"])
     elsif params.keys.include?("status")
       model.find_by(status: params["status"])
+    elsif params.keys.include?("description")
+      model.find_by(description: params["description"])
+    elsif params.keys.include?("unit_price")
+      model.find_by(unit_price: params["unit_price"].to_f*100)
     end
   end
 
@@ -32,6 +36,10 @@ module FindByHelper
       model.where(merchant_id: params["merchant_id"])
     elsif params.keys.include?("status")
       model.where(status: params["status"])
+    elsif params.keys.include?("description")
+      model.where(description: params["description"])
+    elsif params.keys.include?("unit_price")
+      model.where(unit_price: params["unit_price"].to_f*100)
     end
   end
 end
