@@ -10,14 +10,19 @@ class Api::V1::MerchantsController < Api::ApiController
   end
 
   def find
-    respond_with FindByHelper.find_by(params, Merchant)
+    respond_with Merchant.find_by(merchant_params)
   end
 
   def find_all
-    respond_with FindByHelper.find_all_by(params, Merchant)
+    respond_with Merchant.where(merchant_params)
   end
 
   def random
     respond_with Merchant.order("RANDOM()").limit(1).first
+  end
+
+  private
+  def merchant_params
+    params.permit(:id, :name, :created_at, :updated_at)
   end
 end

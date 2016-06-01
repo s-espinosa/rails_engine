@@ -10,14 +10,19 @@ class Api::V1::CustomersController < Api::ApiController
   end
 
   def find
-    respond_with FindByHelper.find_by(params, Customer)
+    respond_with Customer.find_by(customer_params)
   end
 
   def find_all
-    respond_with FindByHelper.find_all_by(params, Customer)
+    respond_with Customer.where(customer_params)
   end
 
   def random
     respond_with Customer.order("RANDOM()").limit(1).first
+  end
+
+  private
+  def customer_params
+    params.permit(:id, :name, :first_name, :last_name, :created_at, :updated_at)
   end
 end

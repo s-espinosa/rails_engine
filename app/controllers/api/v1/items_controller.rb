@@ -10,14 +10,23 @@ class Api::V1::ItemsController < Api::ApiController
   end
 
   def find
-    respond_with FindByHelper.find_by(params, Item)
+    respond_with Item.find_by(item_params)
   end
 
   def find_all
-    respond_with FindByHelper.find_all_by(params, Item)
+    respond_with Item.where(item_params)
   end
 
   def random
     respond_with Item.order("RANDOM()").limit(1).first
+  end
+
+  private
+  def item_params
+    if params.keys.include?(:unit_price)
+      {unit_price: (params[:unit_price] * 100)}
+    else
+      params.permit(:id, :name, :description, :merchant_id, :created_at, :updated_at)
+    end
   end
 end
