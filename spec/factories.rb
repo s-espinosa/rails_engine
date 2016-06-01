@@ -4,6 +4,7 @@ FactoryGirl.define do
   end
 
   factory :customer do
-    sequence(:name) { |n| "Customer#{n}" }
+    first_name { "Customer" }
+    sequence(:last_name) { |n| "#{n}" } 
   end
 end

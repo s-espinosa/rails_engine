@@ -35,8 +35,7 @@ RSpec.describe "GET /api/v1/items/find?parameters=:parameters" do
     merchant = Merchant.create(name: "Merchant")
     item = Item.create(name: "Item1", description: "Item1 description", unit_price: 450, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?unit_price=4%2E50"
-
+    get "/api/v1/items/find?unit_price=4.50"
     expect(json_body["id"]).to eq(item[:id])
     expect(json_body["name"]).to eq(item[:name])
   end

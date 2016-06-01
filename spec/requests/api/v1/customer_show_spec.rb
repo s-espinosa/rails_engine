@@ -7,6 +7,6 @@ RSpec.describe "GET /api/v1/customers/:id" do
     get "/api/v1/customers/#{customer[:id]}"
 
     expect(json_body["id"]).to eq(customer[:id])
-    expect(json_body["name"]).to eq(customer[:name])
+    expect(json_body["first_name"]).to eq(customer[:first_name])
   end
 end
