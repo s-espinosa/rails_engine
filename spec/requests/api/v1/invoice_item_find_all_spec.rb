@@ -48,6 +48,6 @@ RSpec.describe "GET /api/v1/invoice_items/find_all?parameters=:parameters" do
     expect(json_body.count).to eq(2)
     first_invoice = json_body[0]
     expect(first_invoice["id"]).to eq(invoice_item1.id)
-    expect(first_invoice["unit_price"]).to eq(invoice_item1.unit_price)
+    expect(first_invoice["unit_price"]).to eq((invoice_item1.unit_price/100.0).to_s)
   end
 end
