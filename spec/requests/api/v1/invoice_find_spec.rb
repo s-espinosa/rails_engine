@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "GET /api/v1/invoices/find?parameters=:parameters" do
   it "returns an invoice with an id" do
-    customer = create(:customer)
-    merchant = create(:merchant)
-    invoice  = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "shipped")
+    invoice = create(:invoice)
 
     get "/api/v1/invoices/find?id=#{invoice[:id]}"
 

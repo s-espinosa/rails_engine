@@ -9,7 +9,7 @@ RSpec.describe "GET /api/v1/merchants/find_all?parameters=:parameters" do
 
     expect(json_body.count).to eq(2)
     first_merchant = json_body[0]
-    expect(first_merchant["id"]).to eq(merchant1[:id])
+    expect(first_merchant["id"]).to eq(merchant1.id)
     expect(first_merchant["name"]).to eq("Merchant")
   end
 end

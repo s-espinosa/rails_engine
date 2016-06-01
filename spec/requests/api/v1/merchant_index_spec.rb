@@ -8,7 +8,7 @@ RSpec.describe "GET /api/v1/merchants" do
 
     expect(json_body.count).to eq(2)
     first_merchant = json_body[0]
-    expect(first_merchant["id"]).to eq(merchant1[:id])
-    expect(first_merchant["name"]).to eq(merchant1[:name])
+    expect(first_merchant["id"]).to eq(merchant1.id)
+    expect(first_merchant["name"]).to eq(merchant1.name)
   end
 end

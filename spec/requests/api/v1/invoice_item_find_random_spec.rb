@@ -6,6 +6,6 @@ RSpec.describe "GET /api/v1/invoice_items/random" do
 
     get "/api/v1/invoice_items/random"
 
-    expect([invoice_item1[:id], invoice_item2[:id]]).to include(json_body["id"])
+    expect([invoice_item1.id, invoice_item2.id]).to include(json_body["id"])
   end
 end

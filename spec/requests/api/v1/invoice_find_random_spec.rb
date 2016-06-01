@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "GET /api/v1/invoices/random" do
   it "returns a random invoice" do
-    customer = create(:customer)
-    merchant = create(:merchant)
-    invoice1 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "shipped")
-    invoice2 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "shipped")
+    invoice1, invoice2 = create_list(:invoice, 2)
 
     get "/api/v1/invoices/random"
 
