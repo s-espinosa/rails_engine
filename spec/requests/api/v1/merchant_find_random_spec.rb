@@ -6,6 +6,6 @@ RSpec.describe "GET /api/v1/merchants/random" do
 
     get "/api/v1/merchants/random"
 
-    expect(["Merchant2", "Merchant3"]).to include(json_body["name"])
+    expect([merchant1.name, merchant2.name]).to include(json_body["name"])
   end
 end
