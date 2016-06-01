@@ -8,6 +8,7 @@ RSpec.describe "GET /api/v1/invoice_items/find?parameters=:parameters" do
 
     expect(json_body["id"]).to eq(invoice_item.id)
     expect(json_body["invoice_id"]).to eq(invoice_item.invoice_id)
+    expect(json_body["unit_price"]).to eq((invoice_item.unit_price/100.0).to_s)    
   end
 
   xit "returns a invoice_item with a created_at" do
