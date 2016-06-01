@@ -23,7 +23,7 @@ class Api::V1::ItemsController < Api::ApiController
 
   private
   def item_params
-    if params.keys.include?(:unit_price)
+    if params.keys.include?("unit_price")
       {unit_price: (params[:unit_price] * 100)}
     else
       params.permit(:id, :name, :description, :merchant_id, :created_at, :updated_at)
