@@ -10,14 +10,19 @@ class Api::V1::InvoicesController < Api::ApiController
   end
 
   def find
-    respond_with FindByHelper.find_by(params, Invoice)
+    respond_with Invoice.find_by(invoice_params)
   end
 
   def find_all
-    respond_with FindByHelper.find_all_by(params, Invoice)
+    respond_with Invoice.where(invoice_params)
   end
 
   def random
     respond_with Invoice.order("RANDOM()").limit(1).first
+  end
+
+  private
+  def invoice_params
+    params.permit(:id, :customer_id, :merchant_id, :status, :created_at, :updated_at)
   end
 end
