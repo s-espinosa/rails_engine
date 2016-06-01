@@ -27,4 +27,11 @@ FactoryGirl.define do
     quantity { 1 }
     unit_price { item.unit_price }
   end
+
+  factory :transaction do
+    invoice
+    credit_card_number { "4654405418249632" }
+    credit_card_expiration_date { "" }
+    result { "success" }
+  end
 end
