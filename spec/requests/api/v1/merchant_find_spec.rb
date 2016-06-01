@@ -19,7 +19,7 @@ RSpec.describe "GET /api/v1/merchants/find?parameters=:parameters" do
     expect(json_body["name"]).to eq(merchant[:name])
   end
 
-  it "returns a merchant with a created_at" do
+  xit "returns a merchant with a created_at" do
     merchant = create(:merchant)
 
     get "/api/v1/merchants/find?created_at=#{merchant[:created_at]}"
@@ -28,7 +28,7 @@ RSpec.describe "GET /api/v1/merchants/find?parameters=:parameters" do
     expect(json_body["name"]).to eq(merchant[:name])
   end
 
-  it "returns a merchant with an updated_at" do
+  xit "returns a merchant with an updated_at" do
     merchant = create(:merchant)
 
     get "/api/v1/merchants/find?updated_at=#{merchant[:updated_at]}"
