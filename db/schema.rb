@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601030544) do
+ActiveRecord::Schema.define(version: 20160601041014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20160601030544) do
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
   add_index "invoices", ["merchant_id"], name: "index_invoices_on_merchant_id", using: :btree
 
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "unit_price"
+    t.integer  "merchant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["merchant_id"], name: "index_items_on_merchant_id", using: :btree
+
   create_table "merchants", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -41,4 +52,5 @@ ActiveRecord::Schema.define(version: 20160601030544) do
 
   add_foreign_key "invoices", "customers"
   add_foreign_key "invoices", "merchants"
+  add_foreign_key "items", "merchants"
 end
