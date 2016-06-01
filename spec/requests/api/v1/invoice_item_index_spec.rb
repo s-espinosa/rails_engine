@@ -8,7 +8,7 @@ RSpec.describe "GET /api/v1/invoice_items" do
 
     expect(json_body.count).to eq(2)
     first_invoice_item = json_body[0]
-    expect(first_invoice_item["id"]).to eq(invoice_item1[:id])
-    expect(first_invoice_item["name"]).to eq(invoice_item1[:name])
+    expect(first_invoice_item["id"]).to eq(invoice_item1.id)
+    expect(first_invoice_item["item_id"]).to eq(invoice_item1.item_id)
   end
 end

@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe "GET /api/v1/invoices/find_all?parameters=:parameters" do
   it "returns all invoices with a customer_id" do
     customer = create(:customer)
-    merchant1, merchant2 = create_list(:merchant, 2)
-    invoice1 = Invoice.create(customer_id: customer.id, merchant_id: merchant1.id, status: "shipped")
-    invoice2 = Invoice.create(customer_id: customer.id, merchant_id: merchant2.id, status: "shipped")
+    invoice1, invoice2 = create_list(:invoice, 2, customer_id: customer.id)
 
     get "/api/v1/invoices/find_all?customer_id=#{customer.id}"
 
@@ -16,10 +14,8 @@ RSpec.describe "GET /api/v1/invoices/find_all?parameters=:parameters" do
   end
 
   it "returns all invoices with a merchant_id" do
-    customer1, customer2 = create_list(:customer, 2)
     merchant = create(:merchant)
-    invoice1 = Invoice.create(customer_id: customer1.id, merchant_id: merchant.id, status: "shipped")
-    invoice2 = Invoice.create(customer_id: customer2.id, merchant_id: merchant.id, status: "shipped")
+    invoice1, invoice2 = create_list(:invoice, 2, merchant_id: merchant.id)
 
     get "/api/v1/invoices/find_all?merchant_id=#{merchant.id}"
 
@@ -30,11 +26,8 @@ RSpec.describe "GET /api/v1/invoices/find_all?parameters=:parameters" do
   end
 
   it "returns all invoices with a given status" do
-    customer = create(:customer)
-    merchant = create(:merchant)
-    invoice1 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "shipped")
-    invoice2 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "shipped")
-    invoice3 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id, status: "pending")
+    invoice1, invoice2 = create_list(:invoice, 2, status: "shipped")
+    invoice3 = create(:invoice, status: "pending")
 
     get "/api/v1/invoices/find_all?status=shipped"
 
