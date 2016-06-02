@@ -6,4 +6,8 @@ class Item < ActiveRecord::Base
   def self.most_items(quantity)
     joins(:invoice_items).group(:id).order('sum(invoice_items.quantity) DESC').limit("#{quantity}")
   end
+
+  def self.most_revenue(quantity)
+    joins(:invoice_items).group(:id).order('sum(invoice_items.quantity * invoice_items.unit_price) DESC').limit("#{quantity}")
+  end
 end

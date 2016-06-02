@@ -11,6 +11,7 @@ RSpec.describe "GET /api/v1/merchants/most_items?quantity=x" do
     invoice_item3 = create(:invoice_item, item_id: item.id, invoice_id: invoice3.id, quantity: 1)
     transaction1 = create(:transaction, invoice_id: invoice1.id)
     transaction2 = create(:transaction, invoice_id: invoice2.id)
+    transaction3 = create(:transaction, invoice_id: invoice3.id)
 
     get "/api/v1/merchants/most_items?quantity=2"
 
