@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/merchants/random', to: "merchants#random"
       namespace :merchants do
         get '/most_revenue', to: "most_revenue#index"
+        get '/most_items', to: "most_items#index"
         get '/:id/items', to: "items#index"
         get '/:id/invoices', to: "invoices#index"
       end
