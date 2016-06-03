@@ -10,7 +10,7 @@ RSpec.describe "GET /api/v1/customers/find?parameters=:parameters" do
     expect(json_body["last_name"]).to eq(customer.last_name)
   end
 
-  it "returns a customer with a name" do
+  it "returns a customer with a given first name" do
     customer = create(:customer)
 
     get "/api/v1/customers/find?first_name=#{customer.first_name}"
@@ -19,19 +19,11 @@ RSpec.describe "GET /api/v1/customers/find?parameters=:parameters" do
     expect(json_body["last_name"]).to eq(customer.last_name)
   end
 
-  xit "returns a customer with a created_at" do
+
+  it "returns a customer with a given last name" do
     customer = create(:customer)
 
-    get "/api/v1/customers/find?created_at=#{customer.created_at}"
-
-    expect(json_body["id"]).to eq(customer.id)
-    expect(json_body["last_name"]).to eq(customer.last_name)
-  end
-
-  xit "returns a customer with an updated_at" do
-    customer = create(:customer)
-
-    get "/api/v1/customers/find?updated_at=#{customer.updated_at}"
+    get "/api/v1/customers/find?last_name=#{customer.last_name}"
 
     expect(json_body["id"]).to eq(customer.id)
     expect(json_body["last_name"]).to eq(customer.last_name)

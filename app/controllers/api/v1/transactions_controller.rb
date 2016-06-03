@@ -8,11 +8,11 @@ class Api::V1::TransactionsController < Api::ApiController
   end
 
   def find
-    respond_with Transaction.find_by(customer_params)
+    respond_with Transaction.find_by(merchant_params)
   end
 
   def find_all
-    respond_with Transaction.where(customer_params)
+    respond_with Transaction.where(merchant_params)
   end
 
   def random
@@ -20,7 +20,7 @@ class Api::V1::TransactionsController < Api::ApiController
   end
 
   private
-  def customer_params
+  def merchant_params
     params.permit(:id, :invoice_id, :credit_card_number, :credit_card_expiration_date, :result, :created_at, :updated_at)
   end
 end
