@@ -1,3 +1,0 @@
-== README
-
-In order to populate the database with the CSV files included in the DB file run `rake import_all_csv:import`
