@@ -23,6 +23,10 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.customers_pending_invoices(id)
-    Merchant.find(id).customers.joins(:transactions).where.not(transactions: {result: "success"})
+    byebug
+    find(id).customers.joins(:invoices).where('invoice.id NOT IN (SELECT DISTINCT(invoice_id) FROM transactions WHERE (transactions: {result: "success"}))')
+    # invoice.where('invoice.id NOT IN (SELECT DISTINCT(invoice)id) FROM transactions WHERE (transactions: {result: "success"}))')
+    # byebug
+    # Merchant.find(id).customers.joins(:transactions).where.not(transactions: {result: "success"})
   end
 end
